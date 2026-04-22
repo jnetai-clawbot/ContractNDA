@@ -77,7 +77,7 @@ class AddContractActivity : AppCompatActivity() {
 
         lifecycleScope.launch {
             withContext(Dispatchers.IO) {
-                App.getInstance(this@AddContractActivity).contractDao().insert(contract)
+                (application as com.jnetai.contractnda.App).database.contractDao().insert(contract)
             }
             finish()
         }

@@ -50,10 +50,10 @@ class ContractDetailActivity : AppCompatActivity() {
     private fun loadContract(contractId: Long) {
         lifecycleScope.launch {
             contract = withContext(Dispatchers.IO) {
-                App.getInstance(this@ContractDetailActivity).contractDao().getById(contractId)
+                (application as com.jnetai.contractnda.App).database.contractDao().getById(contractId)
             }
             clauses = withContext(Dispatchers.IO) {
-                App.getInstance(this@ContractDetailActivity).clauseDao().getByContractId(contractId)
+                (application as com.jnetai.contractnda.App).database.clauseDao().getByContractId(contractId)
             }
             contract?.let { displayContract(it) }
         }
@@ -70,7 +70,7 @@ class ContractDetailActivity : AppCompatActivity() {
 
         val avgRisk = with(lifecycleScope) {
             kotlinx.coroutines.runBlocking {
-                App.getInstance(this@ContractDetailActivity).clauseDao().getAverageRiskScore(c.id)
+                (application as com.jnetai.contractnda.App).database.clauseDao().getAverageRiskScore(c.id)
             }
         }
         val riskText = if (clauses.isNotEmpty()) {
@@ -118,10 +118,10 @@ class ContractDetailActivity : AppCompatActivity() {
     private fun exportReview(contract: Contract) {
         lifecycleScope.launch {
             val allClauses = withContext(Dispatchers.IO) {
-                App.getInstance(this@ContractDetailActivity).clauseDao().getByContractId(contract.id)
+                (application as com.jnetai.contractnda.App).database.clauseDao().getByContractId(contract.id)
             }
             val avgRisk = withContext(Dispatchers.IO) {
-                App.getInstance(this@ContractDetailActivity).clauseDao().getAverageRiskScore(contract.id)
+                (application as com.jnetai.contractnda.App).database.clauseDao().getAverageRiskScore(contract.id)
             }
             val json = JsonExporter.export(contract, allClauses, avgRisk)
 
@@ -151,7 +151,7 @@ class ContractDetailActivity : AppCompatActivity() {
             .setPositiveButton("Delete") { _, _ ->
                 lifecycleScope.launch {
                     withContext(Dispatchers.IO) {
-                        App.getInstance(this@ContractDetailActivity).contractDao().delete(contract)
+                        (application as com.jnetai.contractnda.App).database.contractDao().delete(contract)
                     }
                     finish()
                 }

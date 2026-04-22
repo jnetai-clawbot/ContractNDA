@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity() {
     private fun loadContracts() {
         lifecycleScope.launch {
             contracts = withContext(Dispatchers.IO) {
-                App.getInstance(this@MainActivity).contractDao().getAll().toMutableList()
+                (application as com.jnetai.contractnda.App).database.contractDao().getAll().toMutableList()
             }
             adapter.updateData(contracts)
             emptyView.visibility = if (contracts.isEmpty()) View.VISIBLE else View.GONE

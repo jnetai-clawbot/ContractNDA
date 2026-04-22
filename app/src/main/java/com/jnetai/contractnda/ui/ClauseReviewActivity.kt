@@ -53,7 +53,7 @@ class ClauseReviewActivity : AppCompatActivity() {
     private fun loadClauses() {
         lifecycleScope.launch {
             clauses = withContext(Dispatchers.IO) {
-                App.getInstance(this@ClauseReviewActivity).clauseDao().getByContractId(contractId).toMutableList()
+                (application as com.jnetai.contractnda.App).database.clauseDao().getByContractId(contractId).toMutableList()
             }
             adapter.updateData(clauses)
         }
@@ -66,8 +66,8 @@ class ClauseReviewActivity : AppCompatActivity() {
     private fun onClauseChecked(clause: Clause, checked: Boolean) {
         lifecycleScope.launch {
             withContext(Dispatchers.IO) {
-                val updated = clause.copy(reviewed = checked, updatedAt = System.currentTimeMillis())
-                App.getInstance(this@ClauseReviewActivity).clauseDao().update(updated)
+                val updated = clause.copy(reviewed = checked)
+                (application as com.jnetai.contractnda.App).database.clauseDao().update(updated)
             }
             loadClauses()
         }
@@ -136,7 +136,7 @@ class ClauseReviewActivity : AppCompatActivity() {
 
                 lifecycleScope.launch {
                     withContext(Dispatchers.IO) {
-                        App.getInstance(this@ClauseReviewActivity).clauseDao().insert(clause)
+                        (application as com.jnetai.contractnda.App).database.clauseDao().insert(clause)
                     }
                     loadClauses()
                 }
@@ -217,7 +217,7 @@ class ClauseReviewActivity : AppCompatActivity() {
 
                 lifecycleScope.launch {
                     withContext(Dispatchers.IO) {
-                        App.getInstance(this@ClauseReviewActivity).clauseDao().update(updated)
+                        (application as com.jnetai.contractnda.App).database.clauseDao().update(updated)
                     }
                     loadClauses()
                 }
@@ -266,7 +266,7 @@ class ClauseReviewActivity : AppCompatActivity() {
         lifecycleScope.launch {
             withContext(Dispatchers.IO) {
                 defaults.forEach { clause ->
-                    App.getInstance(this@ClauseReviewActivity).clauseDao().insert(clause)
+                    (application as com.jnetai.contractnda.App).database.clauseDao().insert(clause)
                 }
             }
             loadClauses()
