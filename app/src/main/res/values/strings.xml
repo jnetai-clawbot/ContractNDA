@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ContractNDA</string>
+    <string name="add_contract">Add Contract</string>
+    <string name="contract_title">Title</string>
+    <string name="contract_type">Type</string>
+    <string name="contract_parties">Parties</string>
+    <string name="contract_date">Date (YYYY-MM-DD)</string>
+    <string name="contract_key_terms">Key Terms</string>
+    <string name="contract_risk_level">Risk Level</string>
+    <string name="save">Save</string>
+    <string name="review_clauses">Review Clauses</string>
+    <string name="export_review">Export Review</string>
+    <string name="delete_contract">Delete</string>
+    <string name="about">About</string>
+    <string name="check_updates">Check for Updates</string>
+    <string name="share">Share</string>
+    <string name="add_clause">Add Clause</string>
+    <string name="add_default_clauses">Add Default Clauses</string>
+    <string name="clause_type">Clause Type</string>
+    <string name="clause_content">Clause Content</string>
+    <string name="clause_notes">Notes / Annotations</string>
+    <string name="no_contracts">No contracts yet.\nTap + to add one.</string>
+</resources>

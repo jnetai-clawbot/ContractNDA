@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Clause Type" android:textSize="14sp" android:textStyle="bold" android:textColor="@color/white" />
+        <Spinner android:id="@+id/clauseTypeSpinner" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4dp" />
+        <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Title" android:layout_marginTop="8dp">
+            <com.google.android.material.textfield.TextInputEditText android:id="@+id/clauseTitleEdit" android:layout_width="match_parent" android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Content" android:layout_marginTop="8dp">
+            <com.google.android.material.textfield.TextInputEditText android:id="@+id/clauseContentEdit" android:layout_width="match_parent" android:layout_height="wrap_content" android:minLines="3" android:inputType="textMultiLine" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Notes" android:layout_marginTop="8dp">
+            <com.google.android.material.textfield.TextInputEditText android:id="@+id/clauseNotesEdit" android:layout_width="match_parent" android:layout_height="wrap_content" android:minLines="2" android:inputType="textMultiLine" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="8dp" android:gravity="center_vertical">
+            <ProgressBar android:id="@+id/riskBar" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" style="@android:style/Widget.ProgressBar.Horizontal" android:max="100" />
+            <TextView android:id="@+id/riskLabel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Risk: 0%" android:paddingLeft="8dp" android:textSize="13sp" />
+        </LinearLayout>
+        <TextView android:id="@+id/redFlagInfo" android:layout_width="match_parent" android:layout_height="wrap_content" android:textSize="13sp" android:textColor="@color/risk_high" android:visibility="gone" android:paddingTop="4dp" />
+    </LinearLayout>
+</ScrollView>
